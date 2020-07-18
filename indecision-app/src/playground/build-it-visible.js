@@ -1,3 +1,10 @@
+
+
+
+// Without using React Components and States
+
+/*
+
 console.log("Visibility Toggle");
 
 let strToggle = 'Show Details';
@@ -28,4 +35,40 @@ const render = () => {
     ReactDOM.render(template, appRoot);
 };
 
-render();
+render();   */
+
+class VisibilityToggle extends React.Component {
+    constructor (props) {
+        super(props);
+
+        this.toggle = this.toggle.bind(this);
+        this.state = {
+            visibility: false
+        };
+    }
+
+    toggle() {
+        this.setState((prev) => {
+            return {
+                visibility: !prev.visibility 
+            };
+        });
+    }
+
+    render() {
+        return (
+            <div>
+            <h1>Visibility Toggle App</h1>
+            <button onClick={this.toggle}>{this.state.visibility ? 'Hide Details' : 'Show Details'}</button>
+            {this.state.visibility && (
+                <div>
+                <p>Hey! Details here.</p>
+                </div>
+            )}
+            </div>
+        );
+    }
+
+}
+
+ReactDOM.render(<VisibilityToggle />, document.querySelector('#app'));
