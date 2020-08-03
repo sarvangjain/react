@@ -1,7 +1,7 @@
 // Filters Action Generators
 
 export const setTextFilter = (text = "") => ({
-    type: 'SET_FILTER_TEXT',
+    type: 'SET_TEXT_FILTER',
     text
 });
 
